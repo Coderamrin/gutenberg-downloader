@@ -2,7 +2,7 @@ import requests
 import os
 import urllib.request
 from lxml import html
- 
+import click 
  
 # check if folder exist if not create a folder
 def createFolder (folderName) :
@@ -64,7 +64,19 @@ def downloadAuthorsList(url):
         open(completeFileName, 'wb').write(book.content) 
 
 
-# downloadAuthorsList("")
-downloadSingleBook("https://www.gutenberg.org/ebooks/66465")
+@click.command()
+@click.option('--issingle', default="Yes", help="Please provide your option") 
+@click.option('--bookurl', default="https://www.gutenberg.org/ebooks/66478", help="Please provide link to download")
 
-# ask if single book or author list then call the funcions accordingly 
+def downloadbook(bookurl, issingle):
+    if issingle == "Yes":
+        downloadSingleBook(bookurl) 
+    else: 
+        downloadAuthorsList(bookurl) 
+ 
+ 
+
+if __name__ == '__main__':
+     downloadbook()
+ 
+ 
