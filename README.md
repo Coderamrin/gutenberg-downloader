@@ -7,7 +7,7 @@ a downloader that download books from gutenberg.com aka project gutenberg.
 
     0. install python 3.7 
     1. install the dependencies with:
-        pipenv install 
+        pipenv install --dev
     2. run 
-        python app.py --issingle="" --url=""
+        python app.py --issingle="" --bookurl=""
 
